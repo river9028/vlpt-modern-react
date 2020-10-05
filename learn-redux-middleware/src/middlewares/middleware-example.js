@@ -16,10 +16,11 @@ function middleware_functional(store) {
 // 새로운 액션이 디스패치 되면 첫 번째로 등록한 미들웨어가 호출됩니다. 만약에 미들웨어에서 next(action)을 호출하게 되면 다음 미들웨어로 액션이 넘어갑니다. 그리고 만약 미들웨어에서 store.dispatch 를 사용하면 다른 액션을 추가적으로 발생시킬 수 도 있습니다.
 
 // 액션 값을 객체가 아닌 함수도 받아오게 만들어서 액션이 함수타입이면 이를 실행 ( ===  redux-thunk)
-const thunk = (store) => (next) => (action) =>
+const thunk = (store) => (next) => (action) => {
   typeof action === 'function'
     ? action(store.dispatch, store.getState)
     : next(action);
+};
 
 const myThunk = () => (dispatch, getState) => {
   dispatch({ type: 'HELLO' });
