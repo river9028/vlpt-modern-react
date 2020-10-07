@@ -90,7 +90,7 @@ export const createPromiseThunkById = (
 
   return (param) => async (dispatch) => {
     const id = idSelector(param);
-    console.log('param:', param, 'idSelector(param):', id);
+    // console.log('param:', param, 'idSelector(param):', id);
     dispatch({ type, meta: id });
     try {
       const payload = await promiseCreator(param);
